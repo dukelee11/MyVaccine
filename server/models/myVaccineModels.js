@@ -22,6 +22,7 @@ const patientSchema = new mongoose.Schema({
   zipCode: { type: Number, required: true },
   confirmationNo: { type: Number, required: true },
 });
+
 const Patient = mongoose.model('Patient', patientSchema);
 
 module.exports = { Patient };

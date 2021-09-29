@@ -1,19 +1,17 @@
 const path = require('path');
 
 module.exports = {
-  mode: process.env.NODE_ENV,
-  entry: {
-    src: './src/index.js',
-  },
+  mode: 'development', //process.env.NODE_ENV,
+  entry: './src/index.js',
   output: {
     filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve(__dirname, './dist'),
   },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.jsx?/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
@@ -28,9 +26,16 @@ module.exports = {
     ],
   },
   devServer: {
+    // static: {
+    //   directory: path.join(__dirname, 'src'),
+    //   publicPath: './dist',
+    // },
     hot: true,
-    publicPath: '/dist',
+    publicPath: '/dist/',
     compress: true,
     port: 8080,
+    proxy: {
+      '/**': { target: 'http://localhost:3000' },
+    },
   },
 };
