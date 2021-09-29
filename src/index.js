@@ -1,6 +1,14 @@
 // entry point for application
 import React from 'react';
 import { render } from 'react-dom';
-import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
 
-render(<App />, document.getElementById('root'));
+import './index.css';
+import App from './App';
+
+render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);

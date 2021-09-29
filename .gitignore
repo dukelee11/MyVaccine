@@ -1,3 +1,5 @@
 *.pdf
 node_modules/
 package-lock.json
+Tech Challenges.txt
+.DS_Store
