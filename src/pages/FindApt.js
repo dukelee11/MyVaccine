@@ -1,21 +1,21 @@
 import React from 'react';
 
-const body = {};
-
-function getValue(e) {
-  e.preventDefault();
-  body.confirmationNo = e.target.value;
-}
-
-function submitForm(e) {
-  e.preventDefault();
-  fetch(`/findapt?q=${body.confirmationNo}`)
-    .then((res) => res.json())
-    .then((data) => console.log(data))
-    .catch((err) => console.log('GET REQUEST ERROR: ', err));
-}
-
 export default function FindApt() {
+  const body = {};
+
+  function getValue(e) {
+    e.preventDefault();
+    body.confirmationNo = e.target.value;
+  }
+
+  function submitForm(e) {
+    e.preventDefault();
+    fetch(`/findapt?q=${body.confirmationNo}`)
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log('GET REQUEST ERROR: ', err));
+  }
+
   return (
     <section>
       <h1>Find My Appointment (React)</h1>
