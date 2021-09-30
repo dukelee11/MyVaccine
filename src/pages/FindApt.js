@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react';
 import { useHistory, Redirect, Route, Switch, Link } from 'react-router-dom';
+import { Button, Container, Row, Col } from 'react-bootstrap';
 import ConfirmApt from './ConfirmApt';
+
+import classes from './FindApt.module.scss';
 
 export default function FindApt() {
   // const body = {};
@@ -55,22 +58,41 @@ export default function FindApt() {
   }
 
   return (
-    <section>
-      <h1>Find My Appointment (React)</h1>
-      <form onSubmit={submitForm}>
-        <div>
-          <label htmlFor="confirmNo">Confirmation Number</label>
-          <input
-            type="text"
-            required
-            id="confirmNo"
-            ref={confirmNoInputRef}
-          ></input>
-        </div>
-        <div>
-          <button>Verify</button>
-        </div>
-        {/* <Link
+    <section className={classes.findAptSection}>
+      <Container className="text-center">
+        <h1>Find My Appointment</h1>
+        {/* <p className="pt-3">
+          Please enter the 6-digit confirmation code to confirm your
+          appointment.
+        </p> */}
+        <form onSubmit={submitForm}>
+          <div>
+            <label htmlFor="confirmNo" className="pt-3">
+              Please enter the 6-digit confirmation code to confirm your
+              appointment.
+            </label>
+            <p>
+              <input
+                type="text"
+                required
+                id="confirmNo"
+                ref={confirmNoInputRef}
+              ></input>
+            </p>
+          </div>
+          <div>
+            <Button type="submit">Verify</Button>
+          </div>
+          <div>
+            <Button
+              type="button"
+              variant="outline-primary"
+              className={classes.forgetCodeBtn}
+            >
+              Don't remember your code?
+            </Button>
+          </div>
+          {/* <Link
           to={{
             pathname: '/confirmapt',
             state,
@@ -78,13 +100,14 @@ export default function FindApt() {
         >
           Register
         </Link> */}
-      </form>
-      {/* <Route exact path="/confirmapt">
+        </form>
+        {/* <Route exact path="/confirmapt">
         {confirmed
           ? history.replace('/confirmapt', { state: fetchedData })
           : // <Redirect to="/confirmapt" />
             console.log('not working?')}
       </Route> */}
+      </Container>
     </section>
   );
 }

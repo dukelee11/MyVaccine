@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Navbar from './components/Navbar';
+import Navbar from './components/MyNavbar';
 import Home from './pages/Home';
 import MakeApt from './pages/MakeApt';
 import FindApt from './pages/FindApt';
@@ -23,9 +23,7 @@ const App = () => {
         <Route component={FindApt} path="/findapt">
           <FindApt />
         </Route>
-        {/* <Route component={ConfirmApt} path="/confirmapt">
-          <ConfirmApt />
-        </Route> */}
+        {/* https://stackoverflow.com/questions/52064303/reactjs-pass-props-with-redirect-component */}
         <Route
           path="/confirmapt"
           render={(props) => <ConfirmApt {...props} />}

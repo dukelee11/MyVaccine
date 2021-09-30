@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
   res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
 });
 
-app.get('/makeapt', (req, res) => {
-  res.sendStatus(200);
-});
+// app.get('/makeapt', (req, res) => {
+//   res.sendStatus(200);
+// });
 
 app.post('/makeapt', myVaccineController.addPatient, (req, res) => {
   console.log('make appointment');
@@ -41,6 +41,15 @@ app.delete(
     res.status(200).json('Successfully Deleted');
   }
 );
+
+// catch-all because of client-side rendering
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
+});
 
 // catch-all route handler
 app.use((req, res) => res.sendStatus(404));
