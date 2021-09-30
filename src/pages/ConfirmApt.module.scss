@@ -1,0 +1,42 @@
+.confirmAptSection {
+  height: 40em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.p {
+  color: grey;
+  margin-top: 1em;
+  margin-bottom: 3em;
+}
+
+.cancelAptContainer {
+  display: flex;
+  justify-content: end;
+  align-items: end;
+}
+
+.makeChangesContainer {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.button {
+  width: 200px;
+}
+
+.header {
+  font-size: 0.9em;
+  color: grey;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.info {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}

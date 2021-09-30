@@ -67,7 +67,10 @@ export default function FindApt() {
         </p> */}
         <form onSubmit={submitForm}>
           <div>
-            <label htmlFor="confirmNo" className="pt-3">
+            <label
+              htmlFor="confirmNo"
+              className={`p-3 m-3 ${classes.formLabel}`}
+            >
               Please enter the 6-digit confirmation code to confirm your
               appointment.
             </label>
@@ -77,11 +80,14 @@ export default function FindApt() {
                 required
                 id="confirmNo"
                 ref={confirmNoInputRef}
+                className="m-3"
               ></input>
             </p>
           </div>
           <div>
-            <Button type="submit">Verify</Button>
+            <Button type="submit" className={`m-2 ${classes.button}`}>
+              Verify
+            </Button>
           </div>
           <div>
             <Button

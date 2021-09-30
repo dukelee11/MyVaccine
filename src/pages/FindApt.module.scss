@@ -1,8 +1,16 @@
 .findAptSection {
-  height: 30em;
+  height: 40em;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.formLabel {
+  color: grey;
+}
+
+.button {
+  width: 200px;
 }
 
 .forgetCodeBtn {
