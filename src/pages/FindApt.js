@@ -10,7 +10,7 @@ export default function FindApt() {
   //   body.confirmationNo = e.target.value;
   // }
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const [confirmed, setConfirmed] = useState(false);
   const [state, setState] = useState(null);

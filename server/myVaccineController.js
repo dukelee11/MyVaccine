@@ -38,6 +38,17 @@ myVaccineController.updatePatient = async (req, res, next) => {
   }
 };
 
-myVaccineController.deletePatient = async (req, res, next) => {};
+myVaccineController.deletePatient = async (req, res, next) => {
+  try {
+    console.log('reqparams', req.params);
+    const deletePatient = await Patient.findOneAndDelete({
+      confirmationNo: req.params.confNo,
+    });
+    return next();
+  } catch (error) {
+    res.sendStatus(400);
+    return next(error);
+  }
+};
 
 module.exports = myVaccineController;

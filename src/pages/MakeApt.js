@@ -1,6 +1,9 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 export default function MakeApt() {
+  const [makeUpdate, setMakeUpdate] = useState(false);
+
   const appointmentDates = [
     'October 2, 2021 Sat',
     'October 4, 2021 Mon',
@@ -102,7 +105,18 @@ export default function MakeApt() {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+      .then(() => setMakeUpdate(true))
       .catch((err) => console.log('POST REQUEST ERROR: ', err));
+  }
+
+  if (makeUpdate) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/success'
+        }}
+      />
+    );
   }
 
   return (

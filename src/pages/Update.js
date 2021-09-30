@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 
 export default function Update(props) {
   const [patientData, setPatientData] = useState(props.location.state);
+  const [makeUpdate, setMakeUpdate] = useState(false);
+
+  const history = useHistory();
 
   const appointmentDates = [
     'October 2, 2021 Sat',
@@ -81,7 +84,18 @@ export default function Update(props) {
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
+      .then(() => setMakeUpdate(true))
       .catch((err) => console.log('POST REQUEST ERROR: ', err));
+  }
+
+  if (makeUpdate) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/success'
+        }}
+      />
+    );
   }
 
   return (
@@ -195,7 +209,14 @@ export default function Update(props) {
           </select>
         </div>
         <div>
-          <button type="button">Cancel</button>
+          <button
+            type="button"
+            onClick={() => {
+              history.replace('/');
+            }}
+          >
+            Cancel
+          </button>
         </div>
         <div>
           <button type="submit">Save Changes</button>

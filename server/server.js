@@ -34,6 +34,14 @@ app.patch('/update', myVaccineController.updatePatient, function (req, res) {
   res.status(200).json('Successfully Updated');
 });
 
+app.delete(
+  '/delete/:confNo',
+  myVaccineController.deletePatient,
+  function (req, res) {
+    res.status(200).json('Successfully Deleted');
+  }
+);
+
 // catch-all route handler
 app.use((req, res) => res.sendStatus(404));
 

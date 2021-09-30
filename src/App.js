@@ -7,6 +7,7 @@ import MakeApt from './pages/MakeApt';
 import FindApt from './pages/FindApt';
 import ConfirmApt from './pages/ConfirmApt';
 import Update from './pages/Update';
+import Success from './pages/Success';
 
 const App = () => {
   return (
@@ -30,6 +31,7 @@ const App = () => {
           render={(props) => <ConfirmApt {...props} />}
         />
         <Route path="/update" render={(props) => <Update {...props} />} />
+        <Route path="/success" render={(props) => <Success {...props} />} />
       </Switch>
     </div>
   );
