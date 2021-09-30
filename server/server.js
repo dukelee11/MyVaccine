@@ -26,16 +26,13 @@ app.post('/makeapt', myVaccineController.addPatient, (req, res) => {
   res.status(200).json('Appointment Successful');
 });
 
-app.get('/findapt', myVaccineController.getPatient, function (req, res, next) {
+app.get('/findapt', myVaccineController.getPatient, function (req, res) {
   res.status(200).json(res.locals.patient);
 });
 
-/* todo:
-1. create controller middleware
-  - this will get data from mongo
-  - send back data to front end
-2. 
-*/
+app.patch('/update', myVaccineController.updatePatient, function (req, res) {
+  res.status(200).json('Successfully Updated');
+});
 
 // catch-all route handler
 app.use((req, res) => res.sendStatus(404));

@@ -24,7 +24,19 @@ myVaccineController.getPatient = async (req, res, next) => {
   }
 };
 
-myVaccineController.updatePatient = async (req, res, next) => {};
+myVaccineController.updatePatient = async (req, res, next) => {
+  try {
+    const patient = await Patient.findOneAndUpdate(
+      { confirmationNo: req.body.confirmationNo },
+      { ...req.body },
+      { new: true }
+    );
+    console.log(patient);
+    return next();
+  } catch (err) {
+    return next({ log: 'error in updatePatient middleware', message: { err } });
+  }
+};
 
 myVaccineController.deletePatient = async (req, res, next) => {};
 
