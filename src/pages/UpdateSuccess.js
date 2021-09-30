@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { Button, Container, Row, Col, Table } from 'react-bootstrap';
 
-import classes from './ConfirmApt.module.scss';
+import classes from './UpdateSuccess.module.scss';
 
-export default function ConfirmApt(props) {
+export default function UpdateSuccess(props) {
   const {
     fullName,
     dob,
@@ -69,10 +69,11 @@ export default function ConfirmApt(props) {
     <section className={classes.confirmAptSection}>
       <Container className="text-center">
         <Row>
-          <h1>Confirm Appointment</h1>
+          <h1>Updates Successfully Saved!</h1>
           <p className={`${classes.p}`}>
-            Please confirm your appointment & personal information <br /> that
-            you entered to reserve your vaccine.
+            We've sent you a confirmation email with these changes. <br />
+            Please double check your appointment and personal <br />
+            information to make sure everything updated correctly.
           </p>
         </Row>
         <Row>

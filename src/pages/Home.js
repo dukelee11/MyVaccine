@@ -14,14 +14,27 @@ export default function Home() {
           <Row
             className={`justify-content-center text-center align-items-center ${classes.firstRow}`}
           >
-            <Col xs={8}>
+            <Col xs={6}>
               <h1>
                 Schedule your FREE <br />
                 COVID-19 vaccine today!
               </h1>
             </Col>
             <Col>
-              <div>{/* <img src={image} alt="vaccination image" /> */}</div>
+              <div>
+                {/* <img src={image} alt="vaccination image" /> */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="9em"
+                  height="9em"
+                  fill="currentColor"
+                  class="bi bi-calendar-range"
+                  viewBox="0 0 16 16"
+                >
+                  <path d="M9 7a1 1 0 0 1 1-1h5v2h-5a1 1 0 0 1-1-1zM1 9h4a1 1 0 0 1 0 2H1V9z" />
+                  <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z" />
+                </svg>
+              </div>
             </Col>
           </Row>
         </Container>

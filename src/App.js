@@ -7,7 +7,10 @@ import MakeApt from './pages/MakeApt';
 import FindApt from './pages/FindApt';
 import ConfirmApt from './pages/ConfirmApt';
 import Update from './pages/Update';
+import MakeAptSuccess from './pages/MakeAptSuccess';
+import UpdateSuccess from './pages/UpdateSuccess';
 import Success from './pages/Success';
+import DeleteSuccess from './pages/DeleteSuccess';
 
 const App = () => {
   return (
@@ -29,6 +32,17 @@ const App = () => {
           render={(props) => <ConfirmApt {...props} />}
         />
         <Route path="/update" render={(props) => <Update {...props} />} />
+        <Route
+          path="/makeaptsuccess"
+          render={(props) => <MakeAptSuccess {...props} />}
+        />
+        <Route
+          path="/updatesuccess"
+          render={(props) => <UpdateSuccess {...props} />}
+        />
+        <Route path="/deletesuccess">
+          <DeleteSuccess />
+        </Route>
         <Route path="/success" render={(props) => <Success {...props} />} />
       </Switch>
     </div>

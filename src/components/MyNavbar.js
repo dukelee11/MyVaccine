@@ -33,7 +33,7 @@ export default function MyNavbar() {
               </LinkContainer>
             </div>
           </Nav>
-          <Nav>
+          <Nav className={classes.helpContainer}>
             <div>
               <svg
                 width="24"
@@ -65,7 +65,7 @@ export default function MyNavbar() {
                 />
               </svg>
 
-              <span>Help</span>
+              <span className={classes.help}>Help</span>
             </div>
           </Nav>
         </Container>

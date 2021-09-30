@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 
 app.post('/makeapt', myVaccineController.addPatient, (req, res) => {
   console.log('make appointment');
-  res.status(200).json('Appointment Successful');
+  res.status(200).json(res.locals.newPatient);
 });
 
 app.get('/findapt', myVaccineController.getPatient, function (req, res) {
@@ -31,7 +31,7 @@ app.get('/findapt', myVaccineController.getPatient, function (req, res) {
 });
 
 app.patch('/update', myVaccineController.updatePatient, function (req, res) {
-  res.status(200).json('Successfully Updated');
+  res.status(200).json(res.locals.updatePatient);
 });
 
 app.delete(

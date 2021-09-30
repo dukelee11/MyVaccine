@@ -86,16 +86,33 @@ export default function Update(props) {
       body: JSON.stringify(patientData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .then(() => setMakeUpdate(true))
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          setMakeUpdate(true);
+          setPatientData(data);
+        }
+      })
+      // .then(() => setMakeUpdate(true))
       .catch((err) => console.log('POST REQUEST ERROR: ', err));
   }
 
-  if (makeUpdate) {
+  // if (makeUpdate) {
+  //   return (
+  //     <Redirect
+  //       to={{
+  //         pathname: '/success',
+  //       }}
+  //     />
+  //   );
+  // }
+
+  if (makeUpdate && patientData) {
     return (
       <Redirect
         to={{
-          pathname: '/success',
+          pathname: '/updatesuccess',
+          state: patientData,
         }}
       />
     );

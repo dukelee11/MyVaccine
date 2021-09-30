@@ -6,6 +6,7 @@ import classes from './MakeApt.module.scss';
 
 export default function MakeApt() {
   const [makeUpdate, setMakeUpdate] = useState(false);
+  const [state, setState] = useState(null);
 
   const history = useHistory();
 
@@ -109,16 +110,33 @@ export default function MakeApt() {
       body: JSON.stringify(newPatientData),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
-      .then(() => setMakeUpdate(true))
+      .then((data) => {
+        console.log(data);
+        if (data) {
+          setMakeUpdate(true);
+          setState(data);
+        }
+      })
+      // .then(() => setMakeUpdate(true))
       .catch((err) => console.log('POST REQUEST ERROR: ', err));
   }
 
-  if (makeUpdate) {
+  // if (makeUpdate) {
+  //   return (
+  //     <Redirect
+  //       to={{
+  //         pathname: '/success',
+  //       }}
+  //     />
+  //   );
+  // }
+
+  if (makeUpdate && state) {
     return (
       <Redirect
         to={{
-          pathname: '/success',
+          pathname: '/makeaptsuccess',
+          state,
         }}
       />
     );
