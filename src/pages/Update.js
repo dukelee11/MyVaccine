@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { Redirect, useHistory } from 'react-router-dom';
+import { Button, Container, Row, Col, Table } from 'react-bootstrap';
+
+import classes from './Update.module.scss';
 
 export default function Update(props) {
   const [patientData, setPatientData] = useState(props.location.state);
@@ -92,136 +95,236 @@ export default function Update(props) {
     return (
       <Redirect
         to={{
-          pathname: '/success'
+          pathname: '/success',
         }}
       />
     );
   }
 
   return (
-    <section>
-      <h2>Update Here!!!</h2>
-      <form onSubmit={submitForm}>
-        <div>
-          <label htmlFor="fullName">Full Name</label>
-          <input
-            type="text"
-            required
-            id="fullName"
-            value={fullName}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="dob">Date of Birth</label>
-          <input
-            type="text"
-            required
-            id="dob"
-            value={dob}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="phoneNo">Phone Number</label>
-          <input
-            type="text"
-            required
-            id="phoneNo"
-            value={phoneNo}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="email">Email Address</label>
-          <input
-            type="text"
-            required
-            id="email"
-            value={email}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="stAddress">Street Address</label>
-          <input
-            type="text"
-            required
-            id="stAddress"
-            value={stAddress}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="city">City</label>
-          <input
-            type="text"
-            required
-            id="city"
-            value={city}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="state">State</label>
-          <input
-            type="text"
-            required
-            id="state"
-            value={state}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="zipCode">Zip Code</label>
-          <input
-            type="text"
-            required
-            id="zipCode"
-            value={zipCode}
-            onChange={updateValue}
-          ></input>
-        </div>
-        <div>
-          <label htmlFor="aptDate">Appointment Date</label>
-          <select required id="aptDate" value={aptDate} onChange={updateValue}>
-            <option value="">--Please choose an option--</option>
-            {aptDateOptions}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="aptTime">Appointment Time</label>
-          <select required id="aptTime" value={aptTime} onChange={updateValue}>
-            <option value="">--Please choose an option--</option>
-            {aptTimeOptions}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="doseType">Dose Type</label>
-          <select
-            required
-            id="doseType"
-            value={doseType}
-            onChange={updateValue}
-          >
-            <option value="">--Please choose an option--</option>
-            {doseOptions}
-          </select>
-        </div>
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              history.replace('/');
-            }}
-          >
-            Cancel
-          </button>
-        </div>
-        <div>
-          <button type="submit">Save Changes</button>
-        </div>
-      </form>
+    <section className={classes.section}>
+      <Container
+        className={`justify-content-center text-center align-items-center`}
+      >
+        <h1>Update Appointment Details</h1>
+        <Container
+          className={`justify-content-start text-start align-items-start ${classes.infoContainer}`}
+        >
+          <form onSubmit={submitForm}>
+            <Row>
+              <h2>Appointment Details</h2>
+            </Row>
+            <Row>
+              <Col>
+                <div>
+                  <label htmlFor="aptDate">Appointment Date</label>
+                  <p>
+                    <select
+                      required
+                      id="aptDate"
+                      value={aptDate}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    >
+                      <option value="">--Please choose an option--</option>
+                      {aptDateOptions}
+                    </select>
+                  </p>
+                </div>
+              </Col>
+              <Col>
+                <div>
+                  <label htmlFor="aptTime">Appointment Time</label>
+                  <p>
+                    <select
+                      required
+                      id="aptTime"
+                      value={aptTime}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    >
+                      <option value="">--Please choose an option--</option>
+                      {aptTimeOptions}
+                    </select>
+                  </p>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>
+                  <label htmlFor="doseType">Dose Type</label>
+                  <p>
+                    <select
+                      required
+                      id="doseType"
+                      value={doseType}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    >
+                      <option value="">--Please choose an option--</option>
+                      {doseOptions}
+                    </select>
+                  </p>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <h2>Personal Information</h2>
+            </Row>
+            <Row>
+              <Col>
+                <div>
+                  <label htmlFor="fullName">Full Name</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="fullName"
+                      value={fullName}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+              <Col>
+                <div>
+                  <label htmlFor="dob">Date of Birth</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="dob"
+                      value={dob}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>
+                  <label htmlFor="phoneNo">Phone Number</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="phoneNo"
+                      value={phoneNo}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+              <Col>
+                <div>
+                  <label htmlFor="email">Email Address</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="email"
+                      value={email}
+                      className={classes.formInput}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <div>
+                <label htmlFor="stAddress">Street Address</label>
+                <p>
+                  <input
+                    type="text"
+                    required
+                    id="stAddress"
+                    value={stAddress}
+                    className={classes.address}
+                    onChange={updateValue}
+                  ></input>
+                </p>
+              </div>
+            </Row>
+            <Row>
+              <Col>
+                <div>
+                  <label htmlFor="city">City</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="city"
+                      value={city}
+                      className={classes.cityStateZip}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+
+              <Col>
+                <div>
+                  <label htmlFor="state">State</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="state"
+                      value={state}
+                      className={classes.cityStateZip}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+              <Col>
+                <div>
+                  <label htmlFor="zipCode">Zip Code</label>
+                  <p>
+                    <input
+                      type="text"
+                      required
+                      id="zipCode"
+                      value={zipCode}
+                      className={classes.cityStateZip}
+                      onChange={updateValue}
+                    ></input>
+                  </p>
+                </div>
+              </Col>
+            </Row>
+            <Row className={classes.buttonRow}>
+              <Col className={classes.cancelContainer}>
+                <div>
+                  <Button
+                    type="button"
+                    variant="outline-primary"
+                    className={classes.button}
+                    onClick={() => {
+                      history.replace('/');
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                </div>
+              </Col>
+              <Col className={classes.saveContainer}>
+                <div>
+                  <Button type="submit" className={classes.button}>
+                    Save Changes
+                  </Button>
+                </div>
+              </Col>
+            </Row>
+          </form>
+        </Container>
+      </Container>
     </section>
   );
 }
