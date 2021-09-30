@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import MakeApt from './pages/MakeApt';
 import FindApt from './pages/FindApt';
 import ConfirmApt from './pages/ConfirmApt';
+import Update from './pages/Update';
 
 const App = () => {
   return (
@@ -18,12 +19,17 @@ const App = () => {
         <Route path="/makeapt">
           <MakeApt />
         </Route>
-        <Route path="/findapt">
+        <Route component={FindApt} path="/findapt">
           <FindApt />
         </Route>
-        <Route path="/confirmapt">
+        {/* <Route component={ConfirmApt} path="/confirmapt">
           <ConfirmApt />
-        </Route>
+        </Route> */}
+        <Route
+          path="/confirmapt"
+          render={(props) => <ConfirmApt {...props} />}
+        />
+        <Route path="/update" render={(props) => <Update {...props} />} />
       </Switch>
     </div>
   );

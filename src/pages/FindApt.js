@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { useHistory, Redirect, Route, Switch, Link } from 'react-router-dom';
+import ConfirmApt from './ConfirmApt';
 
 export default function FindApt() {
   // const body = {};
@@ -10,6 +11,9 @@ export default function FindApt() {
   // }
 
   const history = useHistory();
+
+  const [confirmed, setConfirmed] = useState(false);
+  const [state, setState] = useState(null);
 
   const confirmNoInputRef = useRef();
 
@@ -24,14 +28,30 @@ export default function FindApt() {
     fetch(`/findapt?q=${patientData.confirmationNo}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         if (data) {
-          history.replace('/confirmapt');
-        } else {
-          console.log('CONFIRMATION NUMBER CANNOT BE FOUND');
+          setConfirmed(true);
+          setState(data);
+          // history.push('/confirmapt', data);
+          // return data;
         }
       })
+      // .then((data) => )
       .catch((err) => console.log('GET REQUEST ERROR: ', err));
+  }
+
+  // console.log(confirmed);
+  // console.log(state);
+
+  if (confirmed && state) {
+    return (
+      <Redirect
+        to={{
+          pathname: '/confirmapt',
+          state,
+        }}
+      />
+    );
   }
 
   return (
@@ -50,7 +70,21 @@ export default function FindApt() {
         <div>
           <button>Verify</button>
         </div>
+        {/* <Link
+          to={{
+            pathname: '/confirmapt',
+            state,
+          }}
+        >
+          Register
+        </Link> */}
       </form>
+      {/* <Route exact path="/confirmapt">
+        {confirmed
+          ? history.replace('/confirmapt', { state: fetchedData })
+          : // <Redirect to="/confirmapt" />
+            console.log('not working?')}
+      </Route> */}
     </section>
   );
 }
