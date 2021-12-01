@@ -14,7 +14,7 @@ app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/dist', express.static(path.join(__dirname, '../src')));
 
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
+	res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
 });
 
 // app.get('/makeapt', (req, res) => {
@@ -22,33 +22,29 @@ app.get('/', (req, res) => {
 // });
 
 app.post('/makeapt', myVaccineController.addPatient, (req, res) => {
-  console.log('make appointment');
-  res.status(200).json(res.locals.newPatient);
+	console.log('make appointment');
+	res.status(200).json(res.locals.newPatient);
 });
 
 app.get('/findapt', myVaccineController.getPatient, function (req, res) {
-  res.status(200).json(res.locals.patient);
+	res.status(200).json(res.locals.patient);
 });
 
 app.patch('/update', myVaccineController.updatePatient, function (req, res) {
-  res.status(200).json(res.locals.updatePatient);
+	res.status(200).json(res.locals.updatePatient);
 });
 
-app.delete(
-  '/delete/:confNo',
-  myVaccineController.deletePatient,
-  function (req, res) {
-    res.status(200).json('Successfully Deleted');
-  }
-);
+app.delete('/delete/:confNo', myVaccineController.deletePatient, function (req, res) {
+	res.status(200).json('Successfully Deleted');
+});
 
 // catch-all because of client-side rendering
 app.get('/*', function (req, res) {
-  res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
-    if (err) {
-      res.status(500).send(err);
-    }
-  });
+	res.sendFile(path.join(__dirname, '../public/index.html'), function (err) {
+		if (err) {
+			res.status(500).send(err);
+		}
+	});
 });
 
 // catch-all route handler
@@ -56,14 +52,14 @@ app.use((req, res) => res.sendStatus(404));
 
 // global error handler
 app.use((err, req, res, next) => {
-  const defaultErr = {
-    log: 'Express error handler caught unknown middleware error',
-    status: 500,
-    message: { err: 'An error occurred' },
-  };
-  const errorObj = Object.assign({}, defaultErr, err);
-  console.log(errorObj.log);
-  return res.status(errorObj.status).json(errorObj.message);
+	const defaultErr = {
+		log: 'Express error handler caught unknown middleware error',
+		status: 500,
+		message: { err: 'An error occurred' },
+	};
+	const errorObj = Object.assign({}, defaultErr, err);
+	console.log(errorObj.log);
+	return res.status(errorObj.status).json(errorObj.message);
 });
 
 app.listen(PORT, () => console.log(`LISTENING ON PORT ${PORT}`));

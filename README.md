@@ -1,1 +1,2 @@
-# Codesmith-Solo-Project
+# MyVaccine
+Schedule and manage COVID vaccination appointments.
