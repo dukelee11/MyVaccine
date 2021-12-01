@@ -13,7 +13,7 @@ export default function MyNavbar() {
         <Container>
           <Nav>
             <div>
-              <LinkContainer to="/">
+              <LinkContainer to="/" className={classes.logo}>
                 <svg
                   width="86"
                   height="17"
