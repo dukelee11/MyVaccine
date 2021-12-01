@@ -1,0 +1,13 @@
+version: '3'
+services:
+  dev:
+    image: dukelee11/myvaccine-dev
+    container_name: 'myvaccine-dev'
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/usr/src/app
+      - node_modules:/usr/src/app/node_modules
+    command: 'npm run dev'
+volumes:
+  node_modules:
