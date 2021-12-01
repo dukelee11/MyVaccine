@@ -78,7 +78,7 @@ export default function Update(props) {
   function submitForm(e) {
     e.preventDefault();
     // console.log(patientData);
-    fetch('/update', {
+    fetch('/api/update', {
       method: 'PATCH',
       headers: {
         'Content-type': 'application/json',

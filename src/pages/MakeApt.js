@@ -102,7 +102,7 @@ export default function MakeApt() {
       doseType: enteredDoseType,
     };
 
-    fetch('/makeapt', {
+    fetch('/api/makeapt', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

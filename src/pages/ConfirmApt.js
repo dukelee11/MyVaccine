@@ -26,7 +26,7 @@ export default function ConfirmApt(props) {
   function cancelApt(e) {
     e.preventDefault();
     // console.log(confirmationNo);
-    fetch(`/delete/${confirmationNo}`, {
+    fetch(`/api/delete/${confirmationNo}`, {
       method: 'DELETE',
       headers: {
         'Content-type': 'application/json',

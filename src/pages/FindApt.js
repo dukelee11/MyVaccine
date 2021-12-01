@@ -28,7 +28,7 @@ export default function FindApt() {
       confirmationNo: enteredConfirmNo,
     };
 
-    fetch(`/findapt?q=${patientData.confirmationNo}`)
+    fetch(`/api/findapt?q=${patientData.confirmationNo}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const myVaccineController = require('./myVaccineController');
+const apiRouter = require('./apiRouter');
 
 const PORT = 3000;
 
@@ -13,30 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/dist', express.static(path.join(__dirname, '../dist')));
 app.use('/dist', express.static(path.join(__dirname, '../src')));
 
-app.get('/', (req, res) => {
-	res.status(200).sendFile(path.join(__dirname, '../public/index.html'));
-});
+app.use('/api', apiRouter);
 
-// app.get('/makeapt', (req, res) => {
-//   res.sendStatus(200);
-// });
-
-app.post('/makeapt', myVaccineController.addPatient, (req, res) => {
-	console.log('make appointment');
-	res.status(200).json(res.locals.newPatient);
-});
-
-app.get('/findapt', myVaccineController.getPatient, function (req, res) {
-	res.status(200).json(res.locals.patient);
-});
-
-app.patch('/update', myVaccineController.updatePatient, function (req, res) {
-	res.status(200).json(res.locals.updatePatient);
-});
-
-app.delete('/delete/:confNo', myVaccineController.deletePatient, function (req, res) {
-	res.status(200).json('Successfully Deleted');
-});
 
 // catch-all because of client-side rendering
 app.get('/*', function (req, res) {
