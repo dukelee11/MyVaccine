@@ -1,10 +1,9 @@
 const mongoose = require('mongoose');
 
-const mongoURI =
-  'mongodb+srv://duke:codesmith@cluster0.pfd4j.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
+const DB_URI = process.env.MONGO_URI;
 
 mongoose
-  .connect(mongoURI, {
+  .connect(DB_URI, {
     dbName: 'MyVaccine',
   })
   .then(() => console.log('Connected to Mongo DB.'))
